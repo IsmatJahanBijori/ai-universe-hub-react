@@ -4,10 +4,15 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const SingleCard = (props) => {
-    console.log(props)
-    const { image, features, name, published_in, index } = props.singleCard
+    // console.log(props)
+    const { id, image, features, name, published_in } = props.singleCard
+    const setUniqueId=props.setUniqueId
+
+    // const setUniqueId=()=>{
+    //     console.log(id)
+    // }
     return (
-        <div className="card w-96 bg-base-100 mx-20 mb-16 mt-10 shadow-2xl ">
+        <div className="card w-96 bg-base-100 mx-20 mb-16 mt-10 shadow-2xl " style={{border: "1px solid #159895"}}>
             <figure>
                 <img src={image} alt="" />
             </figure>
@@ -21,7 +26,7 @@ const SingleCard = (props) => {
                 <h2 className='ml-2 text-2xl font-semibold'>{name}</h2>
                 <div className="flex justify-between mt-3">
                 <p><FontAwesomeIcon icon={faCalendar}/> {published_in}</p>
-                <button className='cursor-pointer'><FontAwesomeIcon icon={faArrowRight}/></button></div>
+                <label onClick={()=>setUniqueId(id)} htmlFor="my-modal-5" className='cursor-pointer'><FontAwesomeIcon icon={faArrowRight}/></label></div>
             </div>
         </div>
     );

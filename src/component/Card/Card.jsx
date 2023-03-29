@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import SingleCard from '../SingleCard/SingleCard';
 
 
@@ -7,7 +8,8 @@ import SingleCard from '../SingleCard/SingleCard';
 const Card = () => {
     const [card, setCard] = useState([]);
     const [showAll, setShowAll]=useState(false)
-
+    const [uniqueId, setUniqueId]=useState(null)
+console.log(uniqueId)
     const handleShowAll=()=>{
         setShowAll(true)
     }
@@ -20,10 +22,11 @@ const Card = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
-                card.slice(0, showAll ? 12 : 6).map((singleCard)=><SingleCard singleCard={singleCard} key={singleCard.id}></SingleCard>)
+                card.slice(0, showAll ? 12 : 6).map((singleCard)=><SingleCard singleCard={singleCard} key={singleCard.id} setUniqueId={setUniqueId}></SingleCard>)
             }
             {(!showAll) && <span onClick={handleShowAll}>
             <Button>See More</Button></span>}
+            <Modal></Modal>
         </div>
     );
 };
